@@ -58,7 +58,7 @@ public class AstronautaView extends JFrame{
         rightPanel.setBackground(Color.LIGHT_GRAY);
         rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        JLabel localitzacioLabel = new JLabel("Localitzacio Exacta");
+        JLabel localitzacioLabel = new JLabel("Precise Location");
         localitzacioLabel.setBounds(50, 50, 200, 30);
         localitzacioLabel.setForeground(labelColor);
         localitzacioLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -76,12 +76,12 @@ public class AstronautaView extends JFrame{
         localitzacioField3.setBounds(270, 90, 100, 30);
         rightPanel.add(localitzacioField3);
 
-        JButton enviarButton1 = new JButton("Enviar");
+        JButton enviarButton1 = new JButton("SEND");
         enviarButton1.setBounds(390, 90, 80, 30);
         enviarButton1.setBackground(Color.GREEN);
         rightPanel.add(enviarButton1);
 
-        JLabel misatgeLabel = new JLabel("Enviar Misatge Encriptat");
+        JLabel misatgeLabel = new JLabel("Encrypted Message");
         misatgeLabel.setBounds(50, 170, 200, 30);
         misatgeLabel.setForeground(labelColor);
         misatgeLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -91,7 +91,7 @@ public class AstronautaView extends JFrame{
         misatgeField.setBounds(50, 210, 320, 30);
         rightPanel.add(misatgeField);
 
-        JButton enviarButton2 = new JButton("Enviar");
+        JButton enviarButton2 = new JButton("SEND");
         enviarButton2.setBounds(390, 210, 80, 30);
         enviarButton2.setBackground(Color.GREEN);
         rightPanel.add(enviarButton2);
