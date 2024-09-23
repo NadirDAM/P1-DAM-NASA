@@ -6,7 +6,6 @@ import javax.swing.*;
 public class AstronautView extends JFrame{
 
     public AstronautView() {
-        // Set the frame properties
         setBounds(600, 600, 1000, 700);
         setTitle("Astronauta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -14,12 +13,10 @@ public class AstronautView extends JFrame{
 
         Color labelColor = new Color(0, 0, 0);
 
-        // Create the main panel
         JPanel panel = new JPanel();
-        panel.setLayout(null); // Using null layout for absolute positioning
+        panel.setLayout(null);
         panel.setBackground(Color.GRAY);
 
-        // Create title label
         JLabel titleLabel = new JLabel("Astronauta");
         titleLabel.setBounds(380, 25, 200, 30);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -33,7 +30,6 @@ public class AstronautView extends JFrame{
         leftPanel.setBackground(Color.LIGHT_GRAY);
         leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        // Create left side labels and text fields
         String[] labels = {"Name", "Genre", "Age", "Address", "First flight", "Ok Missions", "KO Missions", "Military Rank"};
         int yOffset = 50;
 
@@ -51,7 +47,6 @@ public class AstronautView extends JFrame{
             yOffset += 50;
         }
 
-        // Create the right side section with labels, text fields, and buttons
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBounds(400, 80, 500, 500);
@@ -96,18 +91,14 @@ public class AstronautView extends JFrame{
         enviarButton2.setBackground(Color.GREEN);
         rightPanel.add(enviarButton2);
 
-        // Add right panel to main panel
         panel.add(rightPanel);
         panel.add(leftPanel);
 
-        // Add the main panel to the frame
         add(panel, BorderLayout.CENTER);
 
-        // Ensure components are properly displayed
         panel.revalidate();
         panel.repaint();
 
-        // Finally, make the frame visible
         setVisible(true);
     }
 

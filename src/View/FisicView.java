@@ -6,7 +6,6 @@ import javax.swing.*;
 public class FisicView extends JFrame {
 
     public FisicView() {
-        // Set the frame properties
         setBounds(600, 600, 1000, 700);
         setTitle("FISIC");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,12 +14,10 @@ public class FisicView extends JFrame {
 
         Color labelColor = new Color(0, 0, 0);
 
-        // Create the main panel
         JPanel panel = new JPanel();
-        panel.setLayout(null); // Using null layout for absolute positioning
+        panel.setLayout(null); 
         panel.setBackground(Color.GRAY);
 
-        // Create title label
         JLabel titleLabel = new JLabel("FISIC");
         titleLabel.setBounds(400, 50, 200, 30);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -32,7 +29,6 @@ public class FisicView extends JFrame {
         leftPanel.setBackground(Color.LIGHT_GRAY);
         leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        // Create left side labels and text fields
         String[] labels = {"Name", "Genre", "Age", "Address", "City", "Academic Qualifications", "Experience", "Salary"};
         int yOffset = 50;
 
@@ -50,7 +46,6 @@ public class FisicView extends JFrame {
             yOffset += 50;
         }
 
-        // Create the right side section with buttons, combo box, and text fields
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBounds(400, 100, 500, 500);
@@ -102,18 +97,14 @@ public class FisicView extends JFrame {
         costField.setBounds(170, 350, 160, 30);
         rightPanel.add(costField);
 
-        // Add right panel to main panel
         panel.add(rightPanel);
         panel.add(leftPanel);
 
-        // Add the main panel to the frame
         add(panel, BorderLayout.CENTER);
 
-        // Ensure components are properly displayed
         panel.revalidate();
         panel.repaint();
 
-        // Finally, make the frame visible
         setVisible(true);
     }
     
