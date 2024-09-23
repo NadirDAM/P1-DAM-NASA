@@ -3,9 +3,9 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 
-public class AstronautaView extends JFrame{
+public class AstronautView extends JFrame{
 
-    public AstronautaView() {
+    public AstronautView() {
         // Set the frame properties
         setBounds(600, 600, 1000, 700);
         setTitle("Astronauta");
@@ -112,7 +112,7 @@ public class AstronautaView extends JFrame{
     }
 
     public static void main(String[] args) {
-        AstronautaView astronautaInterface = new AstronautaView();
+        AstronautView astronautaInterface = new AstronautView();
     }
     
 }
