@@ -16,8 +16,10 @@ public class LoginView extends JFrame {
         Font titleFont = new Font("Arial", Font.BOLD, 24);
 
         Color labelColor = new Color(0, 0, 0);
+        Color buttonColor = new Color(227,227,227);
 
         JPanel panel = new JPanel();
+        // BackgroundPanel panel = new BackgroundPanel("../Images/Nasa_Logo.png");
         panel.setLayout(null); // Using null layout for absolute positioning
         panel.setBackground(Color.GRAY);
         
@@ -60,7 +62,7 @@ public class LoginView extends JFrame {
 
         JButton loginButton = new JButton("Enter");
         loginButton.setBounds(300, 350, 100, 30);
-        loginButton.setBackground(Color.GREEN);
+        loginButton.setBackground(buttonColor);
         panel.add(loginButton);
 
         add(panel, BorderLayout.CENTER);
@@ -69,6 +71,27 @@ public class LoginView extends JFrame {
         panel.repaint();
         
         setVisible(true);
+    }
+
+    class BackgroundPanel extends JPanel {
+        private Image backgroundImage;
+
+        public BackgroundPanel(String filePath) {
+            try {
+                backgroundImage = new ImageIcon(getClass().getResource(filePath)).getImage();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            setLayout(null);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (backgroundImage != null) {
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
     }
 
     public static void main(String[] args) {

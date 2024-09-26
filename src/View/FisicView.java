@@ -13,6 +13,7 @@ public class FisicView extends JFrame {
         setResizable(false);
 
         Color labelColor = new Color(0, 0, 0);
+        Color buttonColor = new Color(227,227,227);
 
         JPanel panel = new JPanel();
         panel.setLayout(null); 
@@ -73,12 +74,12 @@ public class FisicView extends JFrame {
 
         JButton calcularTimeButton = new JButton("Calculate");
         calcularTimeButton.setBounds(350, 350, 100, 30);
-        calcularTimeButton.setBackground(Color.GREEN);
+        calcularTimeButton.setBackground(buttonColor);
         rightPanel.add(calcularTimeButton);
 
         JButton calcularAreaButton = new JButton("Calculate");
         calcularAreaButton.setBounds(350, 250, 100, 30);
-        calcularAreaButton.setBackground(Color.GREEN);
+        calcularAreaButton.setBackground(buttonColor);
         rightPanel.add(calcularAreaButton);
 
         JLabel tempsLabel = new JLabel("Time / Years");

@@ -12,6 +12,7 @@ public class AstronautView extends JFrame{
         setLayout(new BorderLayout());
 
         Color labelColor = new Color(0, 0, 0);
+        Color buttonColor = new Color(227,227,227);
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -73,7 +74,7 @@ public class AstronautView extends JFrame{
 
         JButton enviarButton1 = new JButton("SEND");
         enviarButton1.setBounds(390, 90, 80, 30);
-        enviarButton1.setBackground(Color.GREEN);
+        enviarButton1.setBackground(buttonColor);
         rightPanel.add(enviarButton1);
 
         JLabel misatgeLabel = new JLabel("Encrypted Message");
@@ -88,7 +89,7 @@ public class AstronautView extends JFrame{
 
         JButton enviarButton2 = new JButton("SEND");
         enviarButton2.setBounds(390, 210, 80, 30);
-        enviarButton2.setBackground(Color.GREEN);
+        enviarButton2.setBackground(buttonColor);
         rightPanel.add(enviarButton2);
 
         BackgroundPanel nasaImage = new BackgroundPanel("../Images/Nasa_Logo.png");
