@@ -9,7 +9,7 @@ public class DBConnection {
     private static Connection conn;
     private static String url = "jdbc:mysql://localhost/nasa";
     private static String user = "root";
-    private static String contrasenya = "123456";
+    private static String contrasenya = "12345";
 
 
     public static Connection crearConexio () {
