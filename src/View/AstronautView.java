@@ -35,7 +35,7 @@ public class AstronautView extends JFrame{
 
         String[] labels = {"Name", "Genre", "Age", "Address", "First flight", "Ok Missions", "KO Missions", "Military Rank"};
         int yOffset = 50;
-
+        
         for (String label : labels) {
             JLabel tempLabel = new JLabel(label);
             tempLabel.setBounds(30, yOffset, 150, 30);
@@ -45,6 +45,7 @@ public class AstronautView extends JFrame{
 
             JTextField tempField = new JTextField();
             tempField.setBounds(130, yOffset, 120, 30);
+            tempField.setEditable(false);
             leftPanel.add(tempField);
 
             yOffset += 50;
