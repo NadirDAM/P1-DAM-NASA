@@ -9,12 +9,14 @@ public class AstronautView extends JFrame{
         setBounds(600, 600, 1000, 700);
         setTitle("Astronauta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setLayout(new BorderLayout());
 
         Color labelColor = new Color(0, 0, 0);
         Color buttonColor = new Color(227,227,227);
 
-        JPanel panel = new JPanel();
+        // JPanel panel = new JPanel();
+        BackgroundPanel panel = new BackgroundPanel("../Images/USA_Flag.png");
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
 
