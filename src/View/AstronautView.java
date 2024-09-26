@@ -17,8 +17,8 @@ public class AstronautView extends JFrame{
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
 
-        JLabel titleLabel = new JLabel("Astronauta");
-        titleLabel.setBounds(380, 25, 200, 30);
+        JLabel titleLabel = new JLabel("Astronaut");
+        titleLabel.setBounds(380, 20, 200, 30);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setForeground(labelColor);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,6 +91,12 @@ public class AstronautView extends JFrame{
         enviarButton2.setBackground(Color.GREEN);
         rightPanel.add(enviarButton2);
 
+        BackgroundPanel nasaImage = new BackgroundPanel("../Images/Nasa_Logo.png");
+        nasaImage.setBounds(100, 270, 310, 210);
+        nasaImage.setLayout(null);
+        rightPanel.add(nasaImage);
+
+
         panel.add(rightPanel);
         panel.add(leftPanel);
 
@@ -100,6 +106,27 @@ public class AstronautView extends JFrame{
         panel.repaint();
 
         setVisible(true);
+    }
+
+    class BackgroundPanel extends JPanel {
+        private Image backgroundImage;
+
+        public BackgroundPanel(String filePath) {
+            try {
+                backgroundImage = new ImageIcon(getClass().getResource(filePath)).getImage();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            setLayout(null);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (backgroundImage != null) {
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
     }
 
     public static void main(String[] args) {
