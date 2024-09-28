@@ -20,15 +20,15 @@ public class AstronautController {
 
     private void populateAstronautDetails() {
         int usId = 1; // Assuming user ID is 1 for demonstration
-        model.fetchAstronautDetails(usId);
+        model.fetchAstronautDetails(usId); // Fetch astronaut details from the model
 
         view.setName(model.getName());
         view.setGenre("Genre"); // Dummy data or implement getter in the model
         view.setAge("Age"); // Dummy data or implement getter in the model
         view.setAddress(model.getAddress());
         view.setFirstFly(model.getFirstFly());
-        view.setSuccessMission(model.getSuccessMission());
-        view.setFailMission(model.getFailMission());
+        view.setSuccessMission(model.getSuccessMissions());
+        view.setFailMission(model.getFailMissions());
         view.setRange(model.getRange());
     }
 
@@ -72,6 +72,6 @@ public class AstronautController {
     }
 
     private String encryptMessage(String message) {
-        return message.replaceAll("[AEIOUaeiou]", "");
+        return message.replaceAll("[AEIOUaeiou]", ""); // Removes vowels from the message
     }
 }

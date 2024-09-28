@@ -1,21 +1,20 @@
 package View;
 
-import Controller.AstronautController;
-import Model.AstronautModel;
 import java.awt.*;
 import javax.swing.*;
 
 public class AstronautView extends JFrame {
+    private JTextField[] leftTextFields = new JTextField[8];
+    private JTextField misatgeField;
     private JTextField localitzacioField1;
     private JTextField localitzacioField2;
     private JTextField localitzacioField3;
-    private JTextField misatgeField;
-    private JButton enviarButton1;
-    private JButton enviarButton2;
+    JButton enviarButton1;
+    JButton enviarButton2;
 
-    public AstronautView() {
+    public AstronautView(int userId) { // Modified constructor to accept userId
         setBounds(600, 600, 1000, 700);
-        setTitle("Astronauta");
+        setTitle("Astronaut");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
@@ -34,6 +33,7 @@ public class AstronautView extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(titleLabel);
 
+        // Left panel for astronaut details
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(null);
         leftPanel.setBounds(80, 80, 300, 500);
@@ -43,8 +43,8 @@ public class AstronautView extends JFrame {
         String[] labels = {"Name", "Genre", "Age", "Address", "First flight", "Ok Missions", "KO Missions", "Military Rank"};
         int yOffset = 50;
 
-        for (String label : labels) {
-            JLabel tempLabel = new JLabel(label);
+        for (int i = 0; i < labels.length; i++) {
+            JLabel tempLabel = new JLabel(labels[i]);
             tempLabel.setBounds(30, yOffset, 150, 30);
             tempLabel.setForeground(labelColor);
             tempLabel.setFont(new Font("Arial", Font.BOLD, 13));
@@ -53,11 +53,13 @@ public class AstronautView extends JFrame {
             JTextField tempField = new JTextField();
             tempField.setBounds(130, yOffset, 120, 30);
             tempField.setEditable(false);
+            leftTextFields[i] = tempField; // Store text fields for later access
             leftPanel.add(tempField);
 
             yOffset += 50;
         }
 
+        // Right panel for additional information
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBounds(400, 80, 500, 500);
@@ -139,44 +141,7 @@ public class AstronautView extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        AstronautModel model = new AstronautModel();
-        AstronautView view = new AstronautView();
-        new AstronautController(model, view);
-    }
-
-    public void setName(String name) {
-        // Set name field in left panel (implement as needed)
-    }
-
-    public void setGenre(String genre) {
-        // Set genre field in left panel (implement as needed)
-    }
-
-    public void setAge(String age) {
-        // Set age field in left panel (implement as needed)
-    }
-
-    public void setAddress(String address) {
-        // Set address field in left panel (implement as needed)
-    }
-
-    public void setFirstFly(String firstFly) {
-        // Set first flight field in left panel (implement as needed)
-    }
-
-    public void setSuccessMission(int success) {
-        // Set success missions field in left panel (implement as needed)
-    }
-
-    public void setFailMission(int fail) {
-        // Set fail missions field in left panel (implement as needed)
-    }
-
-    public void setRange(String range) {
-        // Set range field in left panel (implement as needed)
-    }
-
+    // Getter methods for the controller to access components
     public JTextField getCoordinateField1() {
         return localitzacioField1;
     }
@@ -199,5 +164,37 @@ public class AstronautView extends JFrame {
 
     public JButton getSendButton2() {
         return enviarButton2;
+    }
+
+    public void setName(String name) {
+        leftTextFields[0].setText(name);
+    }
+
+    public void setGenre(String genre) {
+        leftTextFields[1].setText(genre);
+    }
+
+    public void setAge(String age) {
+        leftTextFields[2].setText(age);
+    }
+
+    public void setAddress(String address) {
+        leftTextFields[3].setText(address);
+    }
+
+    public void setFirstFly(String firstFly) {
+        leftTextFields[4].setText(firstFly);
+    }
+
+    public void setSuccessMission(int success) {
+        leftTextFields[5].setText(String.valueOf(success));
+    }
+
+    public void setFailMission(int fail) {
+        leftTextFields[6].setText(String.valueOf(fail));
+    }
+
+    public void setRange(String range) {
+        leftTextFields[7].setText(range);
     }
 }
