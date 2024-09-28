@@ -1,9 +1,17 @@
 package View;
 
+import Controller.AstronautController;
+import Model.AstronautModel;
 import java.awt.*;
 import javax.swing.*;
 
-public class AstronautView extends JFrame{
+public class AstronautView extends JFrame {
+    private JTextField localitzacioField1;
+    private JTextField localitzacioField2;
+    private JTextField localitzacioField3;
+    private JTextField misatgeField;
+    private JButton enviarButton1;
+    private JButton enviarButton2;
 
     public AstronautView() {
         setBounds(600, 600, 1000, 700);
@@ -13,9 +21,8 @@ public class AstronautView extends JFrame{
         setLayout(new BorderLayout());
 
         Color labelColor = new Color(0, 0, 0);
-        Color buttonColor = new Color(227,227,227);
+        Color buttonColor = new Color(227, 227, 227);
 
-        // JPanel panel = new JPanel();
         BackgroundPanel panel = new BackgroundPanel("../Images/USA_Flag.png");
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
@@ -35,7 +42,7 @@ public class AstronautView extends JFrame{
 
         String[] labels = {"Name", "Genre", "Age", "Address", "First flight", "Ok Missions", "KO Missions", "Military Rank"};
         int yOffset = 50;
-        
+
         for (String label : labels) {
             JLabel tempLabel = new JLabel(label);
             tempLabel.setBounds(30, yOffset, 150, 30);
@@ -63,19 +70,19 @@ public class AstronautView extends JFrame{
         localitzacioLabel.setFont(new Font("Arial", Font.BOLD, 16));
         rightPanel.add(localitzacioLabel);
 
-        JTextField localitzacioField1 = new JTextField();
+        localitzacioField1 = new JTextField();
         localitzacioField1.setBounds(50, 90, 100, 30);
         rightPanel.add(localitzacioField1);
 
-        JTextField localitzacioField2 = new JTextField();
+        localitzacioField2 = new JTextField();
         localitzacioField2.setBounds(160, 90, 100, 30);
         rightPanel.add(localitzacioField2);
 
-        JTextField localitzacioField3 = new JTextField();
+        localitzacioField3 = new JTextField();
         localitzacioField3.setBounds(270, 90, 100, 30);
         rightPanel.add(localitzacioField3);
 
-        JButton enviarButton1 = new JButton("SEND");
+        enviarButton1 = new JButton("SEND");
         enviarButton1.setBounds(390, 90, 80, 30);
         enviarButton1.setBackground(buttonColor);
         rightPanel.add(enviarButton1);
@@ -86,11 +93,11 @@ public class AstronautView extends JFrame{
         misatgeLabel.setFont(new Font("Arial", Font.BOLD, 16));
         rightPanel.add(misatgeLabel);
 
-        JTextField misatgeField = new JTextField();
+        misatgeField = new JTextField();
         misatgeField.setBounds(50, 210, 320, 30);
         rightPanel.add(misatgeField);
 
-        JButton enviarButton2 = new JButton("SEND");
+        enviarButton2 = new JButton("SEND");
         enviarButton2.setBounds(390, 210, 80, 30);
         enviarButton2.setBackground(buttonColor);
         rightPanel.add(enviarButton2);
@@ -99,7 +106,6 @@ public class AstronautView extends JFrame{
         nasaImage.setBounds(100, 270, 310, 210);
         nasaImage.setLayout(null);
         rightPanel.add(nasaImage);
-
 
         panel.add(rightPanel);
         panel.add(leftPanel);
@@ -134,7 +140,64 @@ public class AstronautView extends JFrame{
     }
 
     public static void main(String[] args) {
-        AstronautView astronautaInterface = new AstronautView();
+        AstronautModel model = new AstronautModel();
+        AstronautView view = new AstronautView();
+        new AstronautController(model, view);
     }
-    
+
+    public void setName(String name) {
+        // Set name field in left panel (implement as needed)
+    }
+
+    public void setGenre(String genre) {
+        // Set genre field in left panel (implement as needed)
+    }
+
+    public void setAge(String age) {
+        // Set age field in left panel (implement as needed)
+    }
+
+    public void setAddress(String address) {
+        // Set address field in left panel (implement as needed)
+    }
+
+    public void setFirstFly(String firstFly) {
+        // Set first flight field in left panel (implement as needed)
+    }
+
+    public void setSuccessMission(int success) {
+        // Set success missions field in left panel (implement as needed)
+    }
+
+    public void setFailMission(int fail) {
+        // Set fail missions field in left panel (implement as needed)
+    }
+
+    public void setRange(String range) {
+        // Set range field in left panel (implement as needed)
+    }
+
+    public JTextField getCoordinateField1() {
+        return localitzacioField1;
+    }
+
+    public JTextField getCoordinateField2() {
+        return localitzacioField2;
+    }
+
+    public JTextField getCoordinateField3() {
+        return localitzacioField3;
+    }
+
+    public JTextField getEncryptedMessageField() {
+        return misatgeField;
+    }
+
+    public JButton getSendButton1() {
+        return enviarButton1;
+    }
+
+    public JButton getSendButton2() {
+        return enviarButton2;
+    }
 }
