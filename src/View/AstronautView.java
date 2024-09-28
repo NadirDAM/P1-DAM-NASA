@@ -1,11 +1,20 @@
 package View;
 
+import Controller.AstronautController;
+import Model.AstronautModel;
 import java.awt.*;
 import javax.swing.*;
 
-public class AstronautView extends JFrame{
+public class AstronautView extends JFrame {
+    private JTextField[] leftTextFields = new JTextField[8]; // Updated size to 8
+    private JTextField misatgeField;
+    private JTextField localitzacioField1;
+    private JTextField localitzacioField2;
+    private JTextField localitzacioField3;
+    JButton enviarButton1;
+    JButton enviarButton2;
 
-    public AstronautView() {
+    public AstronautView(int userId) {
         setBounds(600, 600, 1000, 700);
         setTitle("Astronauta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -13,9 +22,8 @@ public class AstronautView extends JFrame{
         setLayout(new BorderLayout());
 
         Color labelColor = new Color(0, 0, 0);
-        Color buttonColor = new Color(227,227,227);
+        Color buttonColor = new Color(227, 227, 227);
 
-        // JPanel panel = new JPanel();
         BackgroundPanel panel = new BackgroundPanel("../Images/USA_Flag.png");
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
@@ -35,9 +43,9 @@ public class AstronautView extends JFrame{
 
         String[] labels = {"Name", "Genre", "Age", "Address", "First flight", "Ok Missions", "KO Missions", "Military Rank"};
         int yOffset = 50;
-        
-        for (String label : labels) {
-            JLabel tempLabel = new JLabel(label);
+
+        for (int i = 0; i < labels.length; i++) {
+            JLabel tempLabel = new JLabel(labels[i]);
             tempLabel.setBounds(30, yOffset, 150, 30);
             tempLabel.setForeground(labelColor);
             tempLabel.setFont(new Font("Arial", Font.BOLD, 13));
@@ -46,6 +54,7 @@ public class AstronautView extends JFrame{
             JTextField tempField = new JTextField();
             tempField.setBounds(130, yOffset, 120, 30);
             tempField.setEditable(false);
+            leftTextFields[i] = tempField; // Store text fields for later access
             leftPanel.add(tempField);
 
             yOffset += 50;
@@ -63,19 +72,19 @@ public class AstronautView extends JFrame{
         localitzacioLabel.setFont(new Font("Arial", Font.BOLD, 16));
         rightPanel.add(localitzacioLabel);
 
-        JTextField localitzacioField1 = new JTextField();
+        localitzacioField1 = new JTextField();
         localitzacioField1.setBounds(50, 90, 100, 30);
         rightPanel.add(localitzacioField1);
 
-        JTextField localitzacioField2 = new JTextField();
+        localitzacioField2 = new JTextField();
         localitzacioField2.setBounds(160, 90, 100, 30);
         rightPanel.add(localitzacioField2);
 
-        JTextField localitzacioField3 = new JTextField();
+        localitzacioField3 = new JTextField();
         localitzacioField3.setBounds(270, 90, 100, 30);
         rightPanel.add(localitzacioField3);
 
-        JButton enviarButton1 = new JButton("SEND");
+        enviarButton1 = new JButton("SEND");
         enviarButton1.setBounds(390, 90, 80, 30);
         enviarButton1.setBackground(buttonColor);
         rightPanel.add(enviarButton1);
@@ -86,11 +95,11 @@ public class AstronautView extends JFrame{
         misatgeLabel.setFont(new Font("Arial", Font.BOLD, 16));
         rightPanel.add(misatgeLabel);
 
-        JTextField misatgeField = new JTextField();
+        misatgeField = new JTextField();
         misatgeField.setBounds(50, 210, 320, 30);
         rightPanel.add(misatgeField);
 
-        JButton enviarButton2 = new JButton("SEND");
+        enviarButton2 = new JButton("SEND");
         enviarButton2.setBounds(390, 210, 80, 30);
         enviarButton2.setBackground(buttonColor);
         rightPanel.add(enviarButton2);
@@ -99,7 +108,6 @@ public class AstronautView extends JFrame{
         nasaImage.setBounds(100, 270, 310, 210);
         nasaImage.setLayout(null);
         rightPanel.add(nasaImage);
-
 
         panel.add(rightPanel);
         panel.add(leftPanel);
@@ -134,7 +142,65 @@ public class AstronautView extends JFrame{
     }
 
     public static void main(String[] args) {
-        AstronautView astronautaInterface = new AstronautView();
+        AstronautModel model = new AstronautModel();
+        AstronautView view = new AstronautView(1); // Use dummy user ID
+        AstronautController controller = new AstronautController(model, view);
     }
-    
+
+    // Getter methods for the controller to access components
+    public JTextField getCoordinateField1() {
+        return localitzacioField1;
+    }
+
+    public JTextField getCoordinateField2() {
+        return localitzacioField2;
+    }
+
+    public JTextField getCoordinateField3() {
+        return localitzacioField3;
+    }
+
+    public JTextField getEncryptedMessageField() {
+        return misatgeField;
+    }
+
+    public JButton getSendButton1() {
+        return enviarButton1;
+    }
+
+    public JButton getSendButton2() {
+        return enviarButton2;
+    }
+
+    public void setName(String name) {
+        leftTextFields[0].setText(name);
+    }
+
+    public void setGenre(String genre) {
+        leftTextFields[1].setText(genre);
+    }
+
+    public void setAge(String age) {
+        leftTextFields[2].setText(age);
+    }
+
+    public void setAddress(String address) {
+        leftTextFields[3].setText(address);
+    }
+
+    public void setFirstFly(String firstFly) {
+        leftTextFields[4].setText(firstFly);
+    }
+
+    public void setSuccessMission(int success) {
+        leftTextFields[5].setText(String.valueOf(success));
+    }
+
+    public void setFailMission(int fail) {
+        leftTextFields[6].setText(String.valueOf(fail));
+    }
+
+    public void setRange(String range) {
+        leftTextFields[7].setText(range);
+    }
 }
