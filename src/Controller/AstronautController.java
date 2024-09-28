@@ -15,7 +15,7 @@ public class AstronautController {
         this.view = view;
 
         populateAstronautDetails();
-        addListeners();
+        addListeners(); // Ensure this is called
     }
 
     private void populateAstronautDetails() {
@@ -36,6 +36,7 @@ public class AstronautController {
         view.getSendButton1().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Send button 1 clicked!"); // Debug output
                 handleCoordinatesInput();
             }
         });
@@ -43,6 +44,7 @@ public class AstronautController {
         view.getSendButton2().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Send button 2 clicked!"); // Debug output
                 handleEncryptedMessage();
             }
         });
@@ -52,23 +54,46 @@ public class AstronautController {
         String coord1 = view.getCoordinateField1().getText();
         String coord2 = view.getCoordinateField2().getText();
         String coord3 = view.getCoordinateField3().getText();
-
-        if (isValidCoordinate(coord1) && isValidCoordinate(coord2) && isValidCoordinate(coord3)) {
-            String coordinates = coord1 + " " + coord2 + " " + coord3;
-            JOptionPane.showMessageDialog(view, "Coordinates entered: " + coordinates);
+    
+        // Combine the coordinates into a single string for validation
+        String fullCoordinates = coord1 + " " + coord2 + " " + coord3;
+    
+        if (isValidCoordinate(fullCoordinates)) {
+            JOptionPane.showMessageDialog(view, "Coordinates entered: " + fullCoordinates);
         } else {
             JOptionPane.showMessageDialog(view, "Invalid coordinates format. Expected: GGG MM SS [NSEW]");
         }
+
+        view.getCoordinateField1().setText("");
+        view.getCoordinateField2().setText("");
+        view.getCoordinateField3().setText("");
     }
+    
 
     private boolean isValidCoordinate(String coordinate) {
-        return coordinate.matches("\\d{3} \\d{2} \\d{2} [NSEW]");
+        return coordinate.matches("\\d{3} \\d{2} \\d{2}(\\.\\d{2})? [NSEW]");
     }
 
     private void handleEncryptedMessage() {
         String message = view.getEncryptedMessageField().getText();
+
+        // Check if the message is empty
+        if (message.isEmpty()) {
+            JOptionPane.showMessageDialog(view, "Please enter a message to encrypt.");
+            return;
+        }
+
+        // Debugging output
+        System.out.println("Original message: " + message);
+
         String encryptedMessage = encryptMessage(message);
+        
+        // Debugging output
+        System.out.println("Encrypted message: " + encryptedMessage);
+
         JOptionPane.showMessageDialog(view, "Encrypted Message: " + encryptedMessage);
+
+        view.getEncryptedMessageField().setText("");
     }
 
     private String encryptMessage(String message) {

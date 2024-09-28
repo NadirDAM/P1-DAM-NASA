@@ -10,19 +10,17 @@ public class LoginModel {
     public boolean validateUser(String username, String password) {
         boolean isValid = false;
         Connection conn = DBConnection.crearConexio();
-        String sql = "SELECT us_password FROM users WHERE us_name = ?";
+        String sql = "SELECT us_password FROM user WHERE us_name = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                // Assuming the password is stored as plain text for this example
+                // Check if the password matches
                 isValid = password.equals(rs.getString("us_password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBConnection.tancarConexio();
         }
         return isValid;
     }
@@ -31,18 +29,17 @@ public class LoginModel {
     public boolean isAstronaut(int userId) {
         boolean isAstronaut = false;
         Connection conn = DBConnection.crearConexio();
-        String sql = "SELECT us_astronaut FROM users WHERE us_id = ?";
+        String sql = "SELECT us_astronaut FROM user WHERE us_id = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
+                // Check if us_astronaut is set to 1
                 isAstronaut = rs.getInt("us_astronaut") == 1;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBConnection.tancarConexio();
         }
         return isAstronaut;
     }
@@ -51,7 +48,7 @@ public class LoginModel {
     public int getUserId(String username) {
         int userId = -1; // Default value if not found
         Connection conn = DBConnection.crearConexio();
-        String sql = "SELECT us_id FROM users WHERE us_name = ?";
+        String sql = "SELECT us_id FROM user WHERE us_name = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
@@ -61,8 +58,6 @@ public class LoginModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBConnection.tancarConexio();
         }
         return userId;
     }

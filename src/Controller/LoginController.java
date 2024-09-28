@@ -33,15 +33,16 @@ public class LoginController {
         String username = view.getUsername();
         String password = view.getPassword();
         String role = view.getSelectedRole();
-
+    
         if (model.validateUser(username, password)) {
             int userId = model.getUserId(username);
-            if (role.equals("Astronaut")) {
-                // Create an instance of AstronautModel to pass to the view and controller
+            
+            // Check if the user is an astronaut and if the selected role is "Astronaut"
+            if (model.isAstronaut(userId) && "Astronaut".equals(role)) {
                 AstronautModel astronautModel = new AstronautModel();
-                AstronautView astronautView = new AstronautView(userId);
-                // Create the AstronautController to connect the model and view
-                new AstronautController(astronautModel, astronautView);
+                astronautModel.fetchAstronautDetails(userId); // Fetch details from the model
+                AstronautView astronautView = new AstronautView(userId); // Create the view with userId
+                AstronautController astronautController = new AstronautController(astronautModel, astronautView); // Create the controller
                 view.dispose(); // Close the login view
             } else {
                 JOptionPane.showMessageDialog(view, "Access granted for role: " + role);
@@ -51,4 +52,6 @@ public class LoginController {
             JOptionPane.showMessageDialog(view, "Invalid username or password");
         }
     }
+    
+    
 }

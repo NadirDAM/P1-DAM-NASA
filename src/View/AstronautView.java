@@ -1,10 +1,12 @@
 package View;
 
+import Controller.AstronautController;
+import Model.AstronautModel;
 import java.awt.*;
 import javax.swing.*;
 
 public class AstronautView extends JFrame {
-    private JTextField[] leftTextFields = new JTextField[8];
+    private JTextField[] leftTextFields = new JTextField[8]; // Updated size to 8
     private JTextField misatgeField;
     private JTextField localitzacioField1;
     private JTextField localitzacioField2;
@@ -12,9 +14,9 @@ public class AstronautView extends JFrame {
     JButton enviarButton1;
     JButton enviarButton2;
 
-    public AstronautView(int userId) { // Modified constructor to accept userId
+    public AstronautView(int userId) {
         setBounds(600, 600, 1000, 700);
-        setTitle("Astronaut");
+        setTitle("Astronauta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
@@ -33,7 +35,6 @@ public class AstronautView extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(titleLabel);
 
-        // Left panel for astronaut details
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(null);
         leftPanel.setBounds(80, 80, 300, 500);
@@ -59,7 +60,6 @@ public class AstronautView extends JFrame {
             yOffset += 50;
         }
 
-        // Right panel for additional information
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(null);
         rightPanel.setBounds(400, 80, 500, 500);
@@ -139,6 +139,12 @@ public class AstronautView extends JFrame {
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        AstronautModel model = new AstronautModel();
+        AstronautView view = new AstronautView(1); // Use dummy user ID
+        AstronautController controller = new AstronautController(model, view);
     }
 
     // Getter methods for the controller to access components
