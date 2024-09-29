@@ -23,8 +23,8 @@ public class AstronautController {
         model.fetchAstronautDetails(usId); // Fetch astronaut details from the model
 
         view.setName(model.getName());
-        view.setGenre("Genre"); // Dummy data or implement getter in the model
-        view.setAge("Age"); // Dummy data or implement getter in the model
+        view.setGenre(model.getGenre()); // Dummy data or implement getter in the model
+        view.setAge(model.getAge()); // Dummy data or implement getter in the model
         view.setAddress(model.getAddress());
         view.setFirstFly(model.getFirstFly());
         view.setSuccessMission(model.getSuccessMissions());

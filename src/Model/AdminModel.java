@@ -2,7 +2,6 @@ package Model;
 
 import Rols.Astronaut;
 import Rols.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -45,8 +44,8 @@ public class AdminModel {
     }
 
     public static void crearAstronaut (String user, String password) throws SQLException {
-        DBPreparedStatments.crearSentenciaInsert(DBConnection.crearConexio(),"INSERT INTO user (us_name, us_password, us_mechanic, us_physicist ,us_spy, us_astronaut) " +
-                "VALUES ( '" + user + "', '" + password + "', 0,0,0,0);");
+        DBPreparedStatments.crearSentenciaInsert(DBConnection.crearConexio(),"INSERT INTO user (us_name, us_password, us_admin, us_mechanic, us_physicist ,us_spy, us_astronaut) " +
+                "VALUES ( '" + user + "', '" + password + "', 0,0,0,0,0);");
 
     }
     public static void editarAstronaut (int ast_us_id, String ast_name, String ast_birthday, String ast_first_fly , String ast_address, String ast_range) throws SQLException {

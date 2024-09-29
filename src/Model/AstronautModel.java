@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 public class AstronautModel {
     private String name;
+    private String genre;
+    private int age;
     private String address;
     private String firstFly;
     private int successMissions;
@@ -15,13 +17,15 @@ public class AstronautModel {
 
     public void fetchAstronautDetails(int userId) {
         Connection conn = DBConnection.crearConexio();
-        String sql = "SELECT ast_name, ast_address, ast_first_fly, ast_success_mision, ast_fail_mision, ast_range FROM astronaut WHERE ast_us_id = ?";
+        String sql = "SELECT ast_name,ast_genre, ast_age, ast_address, ast_first_fly, ast_success_mision, ast_fail_mision, ast_range FROM astronaut WHERE ast_us_id = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 this.name = rs.getString("ast_name");
+                this.genre = rs.getString("ast_genre");
+                this.age = rs.getInt("ast_age");
                 this.address = rs.getString("ast_address");
                 this.firstFly = rs.getString("ast_first_fly");
                 this.successMissions = rs.getInt("ast_success_mision");
@@ -37,6 +41,14 @@ public class AstronautModel {
 
     public String getName() {
         return name;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public String getAddress() {

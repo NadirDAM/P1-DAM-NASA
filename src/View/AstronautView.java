@@ -180,8 +180,8 @@ public class AstronautView extends JFrame {
         leftTextFields[1].setText(genre);
     }
 
-    public void setAge(String age) {
-        leftTextFields[2].setText(age);
+    public void setAge(int age) {
+        leftTextFields[2].setText(String.valueOf(age));
     }
 
     public void setAddress(String address) {
