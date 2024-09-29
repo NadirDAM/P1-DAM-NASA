@@ -44,6 +44,25 @@ public class LoginModel {
         return isAstronaut;
     }
 
+    public boolean isAdmin(int userId) {
+        boolean isAdmin = false;
+        Connection conn = DBConnection.crearConexio();
+        String sql = "SELECT us_admin FROM user WHERE us_id = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                // Check if us_admin is set to 1
+                isAdmin = rs.getInt("us_admin") == 1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isAdmin;
+    }
+
+
     // Method to get user ID based on username
     public int getUserId(String username) {
         int userId = -1; // Default value if not found
